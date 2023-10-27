@@ -17,5 +17,11 @@ pipeline {
             }
         }
 
+        stage('Stage 4: Container build') {
+            steps {
+                echo 'Deploying..'
+            }
+        }
+
     }
 }
