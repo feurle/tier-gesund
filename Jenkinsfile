@@ -3,6 +3,9 @@ pipeline {
     stages {
         stage('Stage 1: Build') {
             steps {
+                withGradle {
+                    sh 'gradlew build'
+                }
                 echo 'Building..'
             }
         }
