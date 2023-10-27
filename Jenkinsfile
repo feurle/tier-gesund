@@ -5,6 +5,7 @@ pipeline {
             steps {
                 script {
                     dir("${WORKSPACE}") {
+                        sh "chmod +x gradlew"
                         sh "./gradlew build"
                     }
 
