@@ -3,10 +3,12 @@ pipeline {
     stages {
         stage('Stage 1: Build') {
             steps {
-                withGradle {
-                    sh './gradlew build'
+                script {
+                    dir("${WORKSPACE}") {
+                        sh "gradle build"
+                    }
+
                 }
-                echo 'Building..'
             }
         }
         stage('Stage 2: Test') {
