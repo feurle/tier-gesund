@@ -26,6 +26,12 @@ pipeline {
         stage('Stage 4: Container build') {
             steps {
                 echo 'Building the container..'
+                script {
+                    dir("${WORKSPACE}") {
+                        sh "chmod +x gradlew"
+                        sh "./gradlew bootBuildImage"
+                    }
+                }
             }
         }
 
