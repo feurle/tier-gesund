@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     dir("${WORKSPACE}") {
-                        sh "gradle build"
+                        sh "./gradlew build"
                     }
 
                 }
