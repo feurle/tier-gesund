@@ -1,5 +1,6 @@
-def PROJECT_NAME
-def PROJECT_VERSION
+  PROPS = readProperties file: 'gradle.properties'
+  PROJECT_NAME = PROPS['projectName']
+  PROJECT_VERSION = PROPS['projectVersion']
 node {
   echo "Workspace: ${WORKSPACE}"
   PROPS = readProperties file: 'gradle.properties'
@@ -19,7 +20,7 @@ pipeline {
     stage('Stage 1: Gradle build') {
       steps {
         echo 'Building artefact for ${env.PROJECT_NAME} version ${env.PROJECT_VERSION}'
-        sh 'echo "Building artefact for ${env.PROJECT_NAME} version ${env.PROJECT_VERSION}"'
+        sh 'echo "Building artefact for ${PROJECT_NAME} version ${PROJECT_VERSION}"'
         sh 'ls -lsa'
         sh 'id'
         echo '======================='
