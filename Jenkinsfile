@@ -1,5 +1,5 @@
-def projectName
-def projectVersion
+def PROJECT_NAME
+def PROJECT_VERSION
 node {
   echo "Workspace: ${WORKSPACE}"
   PROPS = readProperties file: 'gradle.properties'
