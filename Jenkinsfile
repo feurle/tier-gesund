@@ -16,7 +16,7 @@ pipeline {
                 sh 'ls -lsa'
                 sh 'id'
                 echo '======================='
-                sh './gradlew clean build'
+                sh 'gradle clean build'
 
             }
         }
