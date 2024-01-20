@@ -10,7 +10,10 @@ pipeline {
                 sh 'ls -lsa'
                 sh 'id'
                 echo '======================='
-                sh 'gradle clean build'
+                withGradle {
+                  sh 'gradle clean build'
+                }
+
 
             }
         }
