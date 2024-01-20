@@ -1,3 +1,7 @@
+GRADLE_PROPS = readProperties file:"${WORKSPACE}/gradle.properties"
+PROJECT_VERSION = GRADLE_PROPS['projectVersion']
+PROJECT_NAME = GRADLE_PROPS['projectName']
+
 pipeline {
   options {
     ansiColor('xterm')
@@ -26,7 +30,7 @@ pipeline {
         script {
           withCredentials([string(credentialsId:'docker',variable:'secret')]) {
             sh 'docker login -u feurle -p ${secret}'
-            sh 'docker push feurle/tier-gesund:0.1.0'
+            sh 'docker push feurle/${PROJECT_NAME}:${PROJECT_NAME}'
           }
         }
       }
