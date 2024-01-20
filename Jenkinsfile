@@ -13,7 +13,7 @@ pipeline {
         echo '======================='
         echo ${APP_VERSION}
         echo '======================='
-        sh 'echo ${env.APP_VERSION}
+        sh 'echo ${env.APP_VERSION}'
         echo '======================='
         sh './gradlew clean build'
       }
