@@ -4,9 +4,6 @@ pipeline {
     }
     agent any
     stages {
-      stage('prepare') {
-          env.GRADLE_USER_HOME = "$WORKSPACE/.gradle"
-        }
         stage('Stage 1: Build') {
             agent {
               docker {
