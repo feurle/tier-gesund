@@ -17,7 +17,7 @@ pipeline {
     stage('Stage 2: Docker build') {
       steps {
         echo 'Building Docker Image'
-        sh './gradlew buildBootImage'
+        sh './gradlew bootBuildImage'
       }
     }
   }
