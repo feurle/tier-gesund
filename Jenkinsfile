@@ -14,6 +14,7 @@ pipeline {
             steps {
                 echo 'Testing CI Build..'
                 sh 'ls -lsa'
+                sh 'id'
                 echo '======================='
                 sh './gradlew clean build'
 
