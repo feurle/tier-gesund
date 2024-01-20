@@ -5,31 +5,21 @@ pipeline {
     agent any
     stages {
         stage('Stage 1: Build') {
-            steps {
-                script {
-                    dir("${WORKSPACE}") {
-                        sh "chmod +x gradlew"
-                        sh "./gradlew build"
-                    }
-
-                }
-            }
-        }
-        stage('Stage 2: Docker Build') {
             agent {
-                docker {
-                  image 'gradle:8.5.0-jdk21'
-                  alwaysPull true
-                }
+              docker {
+                image 'gradle:8.5.0-jdk21'
+                alwaysPull true
+              }
             }
             steps {
                 echo 'Testing CI Build..'
                 sh 'ls -lsa'
                 echo '======================='
                 sh './gradlew clean build'
+
             }
         }
-        stage('Stage 3: Deploy') {
+        stage('Stage 2: Deploy') {
             steps {
                 echo 'Deploying..'
             }
@@ -41,7 +31,7 @@ pipeline {
                 script {
                     dir("${WORKSPACE}") {
                         sh "chmod +x gradlew"
-                        sh "./gradlew bootBuildImage"
+                        sh "./gradlew -v"
                     }
                 }
             }
