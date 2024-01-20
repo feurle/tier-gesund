@@ -23,8 +23,6 @@ pipeline {
   stages {
     stage('Stage 1: Gradle build') {
       steps {
-        echo "Project1: ${PROJECT_NAME1}"
-        echo "Version1: ${PROJECT_VERSION1}"
         sh 'ls -lsa'
         sh 'id'
         echo '======================='
@@ -41,6 +39,9 @@ pipeline {
     stage('Push Docker Image') {
       steps {
         script {
+          def props = readProperties file: 'gradle.properties'
+          env.PROJECT_NAME = ['projectName']
+          env.PROJECT_VERSION = ['projectVersion']
           withCredentials([string(credentialsId:'docker',variable:'secret')]) {
             sh 'docker login -u feurle -p ${secret}'
             sh 'docker push feurle/${PROJECT_NAME}:${PROJECT_VERSION}'
