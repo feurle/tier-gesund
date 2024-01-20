@@ -5,12 +5,6 @@ pipeline {
     agent any
     stages {
         stage('Stage 1: Build') {
-            agent {
-              docker {
-                image 'gradle:8.5.0-jdk21'
-                alwaysPull true
-              }
-            }
             steps {
                 echo 'Testing CI Build..'
                 sh 'ls -lsa'
