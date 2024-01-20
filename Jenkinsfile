@@ -4,7 +4,7 @@ pipeline {
   }
   agent any
   environment {
-    def p = readProperties file: 'gradle.properties'
+    p = readProperties file: 'gradle.properties'
     APP_VERSION = p['projectVersion']
   }
   stages {
