@@ -20,5 +20,16 @@ pipeline {
         sh './gradlew bootBuildImage'
       }
     }
+
+    stage('Push Docker Image') {
+      steps {
+        script {
+          withCredentials([string(credentialsId:'docker',variable:'secret')]) {
+            sh 'docker login -u feurle -p ${secret}'
+            sh 'docker push feurle/tier-gesund:0.1.0'
+          }
+        }
+      }
+    }
   }
 }
