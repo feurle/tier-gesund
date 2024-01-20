@@ -1,7 +1,7 @@
 def projectName
 def projectVersion
 node {
-  gradleProps = readProperties file: '${WORKSPACE}/gradle.properties'
+  gradleProps = readProperties file: 'gradle.properties'
   projectName = gradleProps['projectName']
   projectVersion = gradleProps['projectVersion']
 }
