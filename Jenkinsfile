@@ -1,6 +1,3 @@
-def projectVersion = sh script: "gradle getVersion()", returnStdout: true
-def projectGroup= sh script: "gradle getGroup()", returnStdout: true
-
 pipeline {
   options {
     ansiColor('xterm')
@@ -10,6 +7,8 @@ pipeline {
   stages {
     stage('Stage 1: Gradle build') {
       steps {
+      def projectVersion = sh script: "gradle getVersion()", returnStdout: true
+      def projectGroup= sh script: "gradle getGroup()", returnStdout: true
         echo "Project group: ${projectGroup}"
         echo "Project Version: ${projectVersion}"
         echo 'Building artefact..'
