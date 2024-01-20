@@ -1,6 +1,6 @@
-GRADLE_PROPS = readProperties file: '${env.WORKSPACE}/gradle.properties'
-PROJECT_VERSION = GRADLE_PROPS['projectVersion']
-PROJECT_NAME = GRADLE_PROPS['projectName']
+def GRADLE_PROPS = readProperties file: '${env.WORKSPACE}/gradle.properties'
+def PROJECT_VERSION = GRADLE_PROPS['projectVersion']
+def PROJECT_NAME = GRADLE_PROPS['projectName']
 
 pipeline {
   options {
