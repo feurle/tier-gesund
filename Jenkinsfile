@@ -12,9 +12,16 @@ pipeline {
                 }
             }
         }
-        stage('Stage 2: Test') {
+        stage('Stage 2: Docker Build') {
+            agent {
+                docker {
+                  image 'gradle:8.5.0-jdk21'
+                  alwaysPull true
+                }
+            }
             steps {
-                echo 'Testing..'
+                echo 'Testing CI Build..'
+                sh 'gradle clean build'
             }
         }
         stage('Stage 3: Deploy') {
