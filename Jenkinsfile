@@ -3,26 +3,23 @@ pipeline {
     ansiColor('xterm')
   }
   agent any
-
   stages {
     stage('Stage 1: Gradle build') {
       steps {
-        sh 'ls -lsa'
-        sh 'id'
         echo '======================='
         sh './gradlew clean build'
       }
     }
     stage('Stage 2: Docker build') {
       steps {
-        echo 'Building Docker Image'
+        echo '======================='
         sh './gradlew bootBuildImage '
       }
     }
-
-    stage('Push Docker Image') {
+    stage('Stage 3: Push Image to Dockerhub') {
       steps {
         script {
+          echo '======================='
           def props = readProperties file: 'gradle.properties'
           env.PROJECT_NAME = props['projectName']
           env.PROJECT_VERSION = props['projectVersion']
