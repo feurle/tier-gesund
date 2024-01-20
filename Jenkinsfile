@@ -1,6 +1,10 @@
-GRADLE_PROPS = readProperties file: 'gradle.properties'
-PROJECT_VERSION = GRADLE_PROPS['projectVersion']
-PROJECT_NAME = GRADLE_PROPS['projectName']
+def projectName
+def projectVersion
+node {
+  gradleProps = readProperties file: '${WORKSPACE}/gradle.properties'
+  projectName = gradleProps['projectName']
+  projectVersion = gradleProps['projectVersion']
+}
 
 pipeline {
   options {
@@ -30,7 +34,7 @@ pipeline {
         script {
           withCredentials([string(credentialsId:'docker',variable:'secret')]) {
             sh 'docker login -u feurle -p ${secret}'
-            sh 'docker push feurle/${PROJECT_NAME}:${PROJECT_NAME}'
+            sh 'docker push feurle/${projectName}:${projectVersion}'
           }
         }
       }
