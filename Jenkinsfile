@@ -30,5 +30,10 @@ pipeline {
         }
       }
     }
+    stage('Deploy Artefact') {
+      steps {
+
+      }
+    }
   }
 }
