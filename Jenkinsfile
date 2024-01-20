@@ -1,6 +1,3 @@
-  PROPS = readProperties file: 'gradle.properties'
-  PROJECT_NAME = PROPS['projectName']
-  PROJECT_VERSION = PROPS['projectVersion']
 node {
   echo "Workspace: ${WORKSPACE}"
   PROPS = readProperties file: 'gradle.properties'
@@ -15,6 +12,14 @@ pipeline {
     ansiColor('xterm')
   }
   agent any
+
+  environment {
+    PROPS1 = readProperties file: 'gradle.properties'
+      PROJECT_NAME1 = PROPS['projectName']
+      PROJECT_VERSION1 = PROPS['projectVersion']
+  echo "Project1: ${PROJECT_NAME1}"
+  echo "Version1: ${PROJECT_VERSION1}"
+  }
 
   stages {
     stage('Stage 1: Gradle build') {
