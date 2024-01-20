@@ -26,6 +26,7 @@ pipeline {
         script {
           withCredentials([string(credentialsId:'docker',variable:'secret')]) {
             sh 'docker login -u feurle -p ${secret}'
+            sh 'docker tag tier-gesund:0.1.0 feurle/tier-gesund:0.1.0'
             sh 'docker push feurle/tier-gesund:0.1.0'
           }
         }
