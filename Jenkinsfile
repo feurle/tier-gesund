@@ -1,9 +1,12 @@
 def projectName
 def projectVersion
 node {
-  gradleProps = readProperties file: 'gradle.properties'
-  projectName = gradleProps['projectName']
-  projectVersion = gradleProps['projectVersion']
+  echo "Workspace: ${WORKSPACE}"
+  PROPS = readProperties file: '${WORKSPACE}/gradle.properties'
+  PROJECT_NAME = PROPS['projectName']
+  PROJECT_VERSION = PROPS['projectVersion']
+  echo "Project: ${PROJECT_NAME}"
+  echo "Version: ${PROJECT_VERSION}"
 }
 
 pipeline {
