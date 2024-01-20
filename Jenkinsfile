@@ -5,7 +5,7 @@ pipeline {
   agent any
 
   stages {
-    stage('Stage 1: Build') {
+    stage('Stage 1: Gradle build') {
       steps {
         echo 'Building artefact..'
         sh 'ls -lsa'
@@ -14,9 +14,10 @@ pipeline {
         sh './gradlew clean build'
       }
     }
-    stage('Stage 2: Deploy') {
+    stage('Stage 2: Docker build') {
       steps {
-        echo 'Deploying..'
+        echo 'Building Docker Image'
+        sh './gradlew buildBootImage'
       }
     }
   }
