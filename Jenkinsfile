@@ -11,7 +11,7 @@ pipeline {
     stage('Build') {
       steps {
         echo '======================='
-        echo ${APP_VERSION}
+        echo '${APP_VERSION}'
         echo '======================='
         sh 'echo ${env.APP_VERSION}'
         echo '======================='
