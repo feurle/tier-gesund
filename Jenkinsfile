@@ -18,7 +18,7 @@ pipeline {
   stages {
     stage('Stage 1: Gradle build') {
       steps {
-        echo 'Building artefact for ${projectName} version ${projectVersion}'
+        echo 'Building artefact for ${PROJECT_NAME} version ${PROJECT_VERSION}'
         sh 'ls -lsa'
         sh 'id'
         echo '======================='
@@ -37,7 +37,7 @@ pipeline {
         script {
           withCredentials([string(credentialsId:'docker',variable:'secret')]) {
             sh 'docker login -u feurle -p ${secret}'
-            sh 'docker push feurle/${projectName}:${projectVersion}'
+            sh 'docker push feurle/${PROJECT_NAME}:${PROJECT_VERSION}'
           }
         }
       }
