@@ -3,9 +3,17 @@ pipeline {
     ansiColor('xterm')
   }
   agent any
+  environment {
+    def p = readProperties file: 'gradle.properties'
+    APP_VERSION = p['projectVersion']
+  }
   stages {
     stage('Build') {
       steps {
+        echo '======================='
+        echo ${APP_VERSION}
+        echo '======================='
+        sh 'echo ${env.APP_VERSION}
         echo '======================='
         sh './gradlew clean build'
       }
