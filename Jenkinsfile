@@ -15,17 +15,16 @@ pipeline {
 
   environment {
     PROPS1 = readProperties file: 'gradle.properties'
-      PROJECT_NAME1 = PROPS['projectName']
-      PROJECT_VERSION1 = PROPS['projectVersion']
-  echo "Project1: ${PROJECT_NAME1}"
-  echo "Version1: ${PROJECT_VERSION1}"
+      PROJECT_NAME1 = PROPS1['projectName']
+      PROJECT_VERSION1 = PROPS1['projectVersion']
+
   }
 
   stages {
     stage('Stage 1: Gradle build') {
       steps {
-        echo 'Building artefact for ${env.PROJECT_NAME} version ${env.PROJECT_VERSION}'
-        sh 'echo "Building artefact for ${PROJECT_NAME} version ${PROJECT_VERSION}"'
+        echo "Project1: ${PROJECT_NAME1}"
+        echo "Version1: ${PROJECT_VERSION1}"
         sh 'ls -lsa'
         sh 'id'
         echo '======================='
