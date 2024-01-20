@@ -1,4 +1,7 @@
 pipeline {
+    options {
+      ansiColor('xterm')
+    }
     agent any
     stages {
         stage('Stage 1: Build') {
@@ -21,7 +24,9 @@ pipeline {
             }
             steps {
                 echo 'Testing CI Build..'
-                sh 'gradle clean build'
+                sh 'ls -lsa'
+                echo '======================='
+                sh './gradlew clean build'
             }
         }
         stage('Stage 3: Deploy') {
