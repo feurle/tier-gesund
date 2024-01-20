@@ -21,8 +21,8 @@ pipeline {
         script {
           echo '======================='
           def props = readProperties file: 'gradle.properties'
-          PROJECT_NAME = props['projectName']
-          PROJECT_VERSION = props['projectVersion']
+          env.PROJECT_NAME = props['projectName']
+          env.PROJECT_VERSION = props['projectVersion']
           withCredentials([string(credentialsId:'docker',variable:'secret')]) {
             sh 'docker login -u feurle -p ${secret}'
             sh 'docker push feurle/${PROJECT_NAME}:${PROJECT_VERSION}'
