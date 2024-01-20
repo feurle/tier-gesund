@@ -2,7 +2,7 @@ def projectName
 def projectVersion
 node {
   echo "Workspace: ${WORKSPACE}"
-  PROPS = readProperties file: '${WORKSPACE}/gradle.properties'
+  PROPS = readProperties file: 'gradle.properties'
   PROJECT_NAME = PROPS['projectName']
   PROJECT_VERSION = PROPS['projectVersion']
   echo "Project: ${PROJECT_NAME}"
