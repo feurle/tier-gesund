@@ -1,3 +1,6 @@
+def projectVersion = sh script: "gradle getVersion()", returnStdout: true
+def projectGroup= sh script: "gradle getGroup()", returnStdout: true
+
 pipeline {
   options {
     ansiColor('xterm')
@@ -7,6 +10,8 @@ pipeline {
   stages {
     stage('Stage 1: Gradle build') {
       steps {
+        echo "Project group: ${projectGroup}"
+        echo "Project Version: ${projectVersion}"
         echo 'Building artefact..'
         sh 'ls -lsa'
         sh 'id'
@@ -17,7 +22,7 @@ pipeline {
     stage('Stage 2: Docker build') {
       steps {
         echo 'Building Docker Image'
-        sh './gradlew bootBuildImage'
+        sh './gradlew bootBuildImage '
       }
     }
 
@@ -26,7 +31,6 @@ pipeline {
         script {
           withCredentials([string(credentialsId:'docker',variable:'secret')]) {
             sh 'docker login -u feurle -p ${secret}'
-            sh 'docker tag tier-gesund:0.1.0 feurle/tier-gesund:0.1.0'
             sh 'docker push feurle/tier-gesund:0.1.0'
           }
         }
