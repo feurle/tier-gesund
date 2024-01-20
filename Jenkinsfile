@@ -18,7 +18,8 @@ pipeline {
   stages {
     stage('Stage 1: Gradle build') {
       steps {
-        echo 'Building artefact for ${PROJECT_NAME} version ${PROJECT_VERSION}'
+        echo 'Building artefact for ${env.PROJECT_NAME} version ${env.PROJECT_VERSION}'
+        sh 'echo "Building artefact for ${env.PROJECT_NAME} version ${env.PROJECT_VERSION}"'
         sh 'ls -lsa'
         sh 'id'
         echo '======================='
