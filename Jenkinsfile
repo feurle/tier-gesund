@@ -4,19 +4,19 @@ pipeline {
   }
   agent any
   stages {
-    stage('Stage 1: Gradle build') {
+    stage('Build') {
       steps {
         echo '======================='
         sh './gradlew clean build'
       }
     }
-    stage('Stage 2: Docker build') {
+    stage('Build Image') {
       steps {
         echo '======================='
         sh './gradlew bootBuildImage '
       }
     }
-    stage('Stage 3: Push Image to Dockerhub') {
+    stage('Push Image') {
       steps {
         script {
           echo '======================='
