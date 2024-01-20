@@ -1,4 +1,4 @@
-GRADLE_PROPS = readProperties file: './gradle.properties'
+GRADLE_PROPS = readProperties file: 'gradle.properties'
 PROJECT_VERSION = GRADLE_PROPS['projectVersion']
 PROJECT_NAME = GRADLE_PROPS['projectName']
 
