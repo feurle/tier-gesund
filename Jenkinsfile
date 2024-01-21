@@ -27,6 +27,8 @@ pipeline {
           withCredentials([string(credentialsId:'docker',variable:'secret')]) {
             sh 'docker login -u feurle -p ${secret}'
             sh 'docker push feurle/${PROJECT_NAME}:${PROJECT_VERSION}'
+            sh 'docker tag feurle/${PROJECT_NAME}:${PROJECT_VERSION} feurle/${PROJECT_NAME}:${IMAGE_VERSION}'
+            sh 'docker push feurle/${PROJECT_NAME}'
           }
         }
       }
