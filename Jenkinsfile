@@ -26,7 +26,7 @@ pipeline {
           env.IMAGE_VERSION = props['dockerImageVersion']
           withCredentials([string(credentialsId:'docker',variable:'secret')]) {
             sh 'docker login -u feurle -p ${secret}'
-            sh 'docker push feurle/${PROJECT_NAME}:${IMAGE_VERSION}'
+            sh 'docker push feurle/${PROJECT_NAME}:${PROJECT_VERSION}'
           }
         }
       }
