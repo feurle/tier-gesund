@@ -33,6 +33,7 @@ pipeline {
     stage('Deploy Artefact') {
       steps {
         echo '======================='
+        echo 'execute script'
       }
     }
   }
