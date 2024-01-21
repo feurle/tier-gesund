@@ -47,8 +47,7 @@ pipeline {
             sshScript remote: remote, script: "/appbase/tier-gesund/redeploy.sh"
           }
         }
-        echo '======================='
-        echo 'execute script'
+        echo '======================= END OF Jenkinsfile ======================='
       }
     }
   }
