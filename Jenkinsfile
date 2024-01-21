@@ -44,8 +44,7 @@ pipeline {
             remote.user = USERNAME
             remote.identityFile = KEY_FILE
             remote.allowAnyHosts = true
-            sshScript remote: remote, script: "/appbase/tier-gesund/redeploy.sh
-
+            sshScript remote: remote, script: "/appbase/tier-gesund/redeploy.sh"
           }
         }
         echo '======================='
