@@ -44,16 +44,14 @@ pipeline {
           echo '======================='
           withCredentials([sshUserPrivateKey(credentialsId: 'deploymentCredentialsId', keyFileVariable: 'KEY_FILE', usernameVariable: 'USERNAME')]) {
             def remote = [:]
-            remote.name = "einhorn"
-            remote.host = "einhorn"
+            remote.name = 'einhorn'
+            remote.host = 'einhorn'
             remote.user = USERNAME
             remote.identityFile = KEY_FILE
             remote.allowAnyHosts = true
             sshScript remote: remote, script: '/appbase/tier-gesund/redeploy.sh'
           }
         }
-
-        echo 'execute script'
         echo '======================= END OF Jenkinsfile ======================='
       }
     }
