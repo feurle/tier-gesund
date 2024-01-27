@@ -45,7 +45,7 @@ pipeline {
           echo deploymentCredentialsId
           echo "Deployment ID: $deploymentCredentialsId"
           echo '======================='
-          withCredentials([sshUserPrivateKey(credentialsId: $deploymentCredentialsId, keyFileVariable: 'KEY_FILE', usernameVariable: 'USERNAME')]) {
+          withCredentials([sshUserPrivateKey(credentialsId: deploymentCredentialsId, keyFileVariable: 'KEY_FILE', usernameVariable: 'USERNAME')]) {
             def remote = [:]
             remote.name = 'einhorn'
             remote.host = 'einhorn'
