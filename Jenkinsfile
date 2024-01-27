@@ -40,8 +40,8 @@ pipeline {
     stage('Deploy Artefact') {
       steps {
         echo '======================='
-        withCredentials([sshUserPrivateKey(credentialsId: 'sshUser', keyFileVariable: 'identity')]) {
-            def remote = [:]
+        //withCredentials([sshUserPrivateKey(credentialsId: 'sshUser', keyFileVariable: 'identity')]) {
+        /*    def remote = [:]
             remote.name = "test"
             remote.host = "test.tier-gesund.at"
             remote.user = SSH_USER
@@ -49,7 +49,7 @@ pipeline {
             remote.allowAnyHosts = true
             sshScript remote: remote, script: '/appbase/tier-gesund/redeploy.sh'
         }
-
+*/
         echo 'execute script'
         echo '======================= END OF Jenkinsfile ======================='
       }
