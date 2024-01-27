@@ -39,17 +39,20 @@ pipeline {
     }
     stage('Deploy Artefact') {
       steps {
-        echo '======================='
-        //withCredentials([sshUserPrivateKey(credentialsId: 'sshUser', keyFileVariable: 'identity')]) {
-        /*    def remote = [:]
-            remote.name = "test"
-            remote.host = "test.tier-gesund.at"
-            remote.user = SSH_USER
-            remote.identityFile = IDENTITY_FILE
+        script {
+          def deploymentCredentialsId = 'INTEGRATION_TEST_KEY'
+          echo '======================='
+          withCredentials([sshUserPrivateKey(credentialsId: 'deploymentCredentialsId', keyFileVariable: 'KEY_FILE', usernameVariable: 'USERNAME')]) {
+            def remote = [:]
+            remote.name = "einhorn"
+            remote.host = "einhorn"
+            remote.user = USERNAME
+            remote.identityFile = KEY_FILE
             remote.allowAnyHosts = true
             sshScript remote: remote, script: '/appbase/tier-gesund/redeploy.sh'
+          }
         }
-*/
+
         echo 'execute script'
         echo '======================= END OF Jenkinsfile ======================='
       }
