@@ -40,9 +40,9 @@ pipeline {
     stage('Deploy Artefact') {
       steps {
         script {
-          def deploymentCredentialsId = 'INTEGRATION_TEST_KEY'
+          //def deploymentCredentialsId = 'INTEGRATION_TEST_KEY'
           echo '======================='
-          withCredentials([sshUserPrivateKey(credentialsId: 'deploymentCredentialsId', keyFileVariable: 'KEY_FILE', usernameVariable: 'USERNAME')]) {
+          withCredentials([sshUserPrivateKey(credentialsId: 'INTEGRATION_TEST_KEY', keyFileVariable: 'KEY_FILE', usernameVariable: 'USERNAME')]) {
             def remote = [:]
             remote.name = 'einhorn'
             remote.host = 'einhorn'
