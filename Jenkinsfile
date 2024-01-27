@@ -51,6 +51,19 @@ pipeline {
         }
 
         echo 'execute script'
+        script {
+          def deploymentCredentialsId = 'INTEGRATION_TEST_KEY'
+          withCredentials([sshUserPrivateKey(credentialsId: deploymentCredentialsId, keyFileVariable: 'KEY_FILE', usernameVariable: 'USERNAME')]) {
+            def remote = [:]
+            remote.name = 'einhorn'
+            remote.host = 'einhorn'
+            remote.user = USERNAME
+            remote.identityFile = KEY_FILE
+            remote.allowAnyHosts = true
+            sshScript remote: remote, script: "/appbase/tier-gesund/redeploy.sh"
+          }
+        }
+        echo '======================= END OF Jenkinsfile ======================='
       }
     }
   }
