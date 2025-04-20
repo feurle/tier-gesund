@@ -1,0 +1,25 @@
+entity NewsArticle {
+	title String required
+    content TextBlob required
+    state State
+    publishedDate Instant
+    author String
+    language Language
+}
+
+enum State {
+    PUBLISHED, CLOSED, CREATED
+}
+
+enum Language {
+  GERMAN, ENGLISH, SWEDISH
+}
+
+relationship ManyToOne {
+  NewsArticle to User with builtInEntity
+}
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
