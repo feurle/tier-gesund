@@ -22,6 +22,11 @@ export const Home = () => {
         <p className="lead">
           <Translate contentKey="home.subtitle">This is your homepage</Translate>
         </p>
+        <div>
+          <Alert color="secondary">
+            <p>Hier kommt der Text rein</p>
+          </Alert>
+        </div>
         {account?.login ? (
           <div>
             <Alert color="success">
