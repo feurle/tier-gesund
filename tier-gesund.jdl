@@ -1,18 +1,33 @@
 entity NewsArticle {
-	title String required
-    content TextBlob required
-    state State
-    publishedDate Instant
-    author String
-    language Language
+  title String required
+  content TextBlob required
+  state State
+  publishedDate Instant
+  author String
+  language Language
 }
 
+entity ArticleImage {
+  title String required
+  image ImageBlob
+}
+
+
 enum State {
-    PUBLISHED, CLOSED, CREATED
+  PUBLISHED,
+  CLOSED,
+  CREATED
 }
 
 enum Language {
-  GERMAN, ENGLISH, SWEDISH
+  GERMAN,
+  ENGLISH,
+  SWEDISH,
+  RUSSIAN
+}
+
+relationship OneToOne {
+  NewsArticle{articleImage} to ArticleImage
 }
 
 relationship ManyToOne {

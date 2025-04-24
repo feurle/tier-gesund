@@ -1,0 +1,31 @@
+{
+  "tiergesundApp": {
+    "newsArticle": {
+      "home": {
+        "title": "News Articles",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый News Article",
+        "createOrEditLabel": "Создать или отредактировать News Article",
+        "notFound": "News Articles не найдено"
+      },
+      "created": "Новый News Article создан с идентификатором {{ param }}",
+      "updated": "News Article обновлен с идентификатором {{ param }}",
+      "deleted": "News Article удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить News Article {{ id }}?"
+      },
+      "detail": {
+        "title": "News Article"
+      },
+      "id": "ID",
+      "title": "Title",
+      "content": "Content",
+      "state": "State",
+      "publishedDate": "Published Date",
+      "author": "Author",
+      "language": "Language",
+      "articleImage": "Article Image",
+      "user": "User"
+    }
+  }
+}

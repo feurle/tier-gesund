@@ -1,0 +1,26 @@
+{
+  "tiergesundApp": {
+    "articleImage": {
+      "home": {
+        "title": "Article Images",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Skapa en ny Article Image",
+        "createOrEditLabel": "Skapa eller ändra en Article Image",
+        "notFound": "No Article Images found"
+      },
+      "created": "En ny Article Image är skapad med id {{ param }}",
+      "updated": "En Article Image är uppdaterad med id  {{ param }}",
+      "deleted": "En Article Image är borttagen med id  {{ param }}",
+      "delete": {
+        "question": "Är du säker på att du vill ta bort Article Image {{ id }}?"
+      },
+      "detail": {
+        "title": "Article Image"
+      },
+      "id": "ID",
+      "title": "Title",
+      "image": "Image",
+      "newsArticle": "News Article"
+    }
+  }
+}

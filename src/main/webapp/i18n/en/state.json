@@ -1,0 +1,10 @@
+{
+  "tiergesundApp": {
+    "State": {
+      "null": "",
+      "PUBLISHED": "PUBLISHED",
+      "CLOSED": "CLOSED",
+      "CREATED": "CREATED"
+    }
+  }
+}

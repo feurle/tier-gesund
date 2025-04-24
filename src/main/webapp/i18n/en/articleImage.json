@@ -1,0 +1,26 @@
+{
+  "tiergesundApp": {
+    "articleImage": {
+      "home": {
+        "title": "Article Images",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Article Image",
+        "createOrEditLabel": "Create or edit a Article Image",
+        "notFound": "No Article Images found"
+      },
+      "created": "A new Article Image is created with identifier {{ param }}",
+      "updated": "A Article Image is updated with identifier {{ param }}",
+      "deleted": "A Article Image is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Article Image {{ id }}?"
+      },
+      "detail": {
+        "title": "Article Image"
+      },
+      "id": "ID",
+      "title": "Title",
+      "image": "Image",
+      "newsArticle": "News Article"
+    }
+  }
+}

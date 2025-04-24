@@ -1,0 +1,56 @@
+{
+  "annotations": {
+    "changelogDate": "20250421153514"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "content",
+      "fieldType": "TextBlob",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "state",
+      "fieldType": "State",
+      "fieldValues": "PUBLISHED,CLOSED,CREATED"
+    },
+    {
+      "fieldName": "publishedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "author",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "language",
+      "fieldType": "Language",
+      "fieldValues": "GERMAN,ENGLISH,SWEDISH,RUSSIAN"
+    }
+  ],
+  "name": "NewsArticle",
+  "relationships": [
+    {
+      "otherEntityName": "articleImage",
+      "relationshipName": "articleImage",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "newsArticle",
+      "relationshipName": "user",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipWithBuiltInEntity": true
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

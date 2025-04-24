@@ -1,0 +1,31 @@
+{
+  "tiergesundApp": {
+    "newsArticle": {
+      "home": {
+        "title": "News Articles",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Skapa en ny News Article",
+        "createOrEditLabel": "Skapa eller ändra en News Article",
+        "notFound": "No News Articles found"
+      },
+      "created": "En ny News Article är skapad med id {{ param }}",
+      "updated": "En News Article är uppdaterad med id  {{ param }}",
+      "deleted": "En News Article är borttagen med id  {{ param }}",
+      "delete": {
+        "question": "Är du säker på att du vill ta bort News Article {{ id }}?"
+      },
+      "detail": {
+        "title": "News Article"
+      },
+      "id": "ID",
+      "title": "Title",
+      "content": "Content",
+      "state": "State",
+      "publishedDate": "Published Date",
+      "author": "Author",
+      "language": "Language",
+      "articleImage": "Article Image",
+      "user": "User"
+    }
+  }
+}

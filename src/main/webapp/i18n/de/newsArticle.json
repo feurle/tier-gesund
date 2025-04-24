@@ -1,0 +1,31 @@
+{
+  "tiergesundApp": {
+    "newsArticle": {
+      "home": {
+        "title": "News Articles",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "News Article erstellen",
+        "createOrEditLabel": "News Article erstellen oder bearbeiten",
+        "notFound": "Keine News Articles gefunden"
+      },
+      "created": "News Article erstellt mit ID {{ param }}",
+      "updated": "News Article aktualisiert mit ID {{ param }}",
+      "deleted": "News Article gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll News Article {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "News Article"
+      },
+      "id": "ID",
+      "title": "Title",
+      "content": "Content",
+      "state": "State",
+      "publishedDate": "Published Date",
+      "author": "Author",
+      "language": "Language",
+      "articleImage": "Article Image",
+      "user": "User"
+    }
+  }
+}

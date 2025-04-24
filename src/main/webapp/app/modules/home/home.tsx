@@ -5,10 +5,32 @@ import { Link } from 'react-router-dom';
 import { Translate } from 'react-jhipster';
 import { Alert, Col, Row } from 'reactstrap';
 
-import { useAppSelector } from 'app/config/store';
+import { useAppDispatch, useAppSelector } from 'app/config/store';
+
+import { getEntity } from 'app/entities/news-article/news-article.reducer';
 
 export const Home = () => {
   const account = useAppSelector(state => state.authentication.account);
+
+  const dispatch = useAppDispatch();
+
+  const loading = useAppSelector(state => state.newsArticle.loading);
+  const error = useAppSelector(state => state.newsArticle.error);
+
+  React.useEffect(() => {
+    // Replace '1' with the ID you want to fetch
+    dispatch(getEntity(1));
+  }, []);
+
+  const newsArticleEntity = useAppSelector(state => state.newsArticle.entity);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <Row>
@@ -24,7 +46,9 @@ export const Home = () => {
         </p>
         <div>
           <Alert color="secondary">
-            <p>Hier kommt der Text rein</p>
+            <span id="id">{newsArticleEntity.id}</span>
+            <span id="title">{newsArticleEntity.title}</span>
+            <p id="content">{newsArticleEntity.content}</p>
           </Alert>
         </div>
         {account?.login ? (
@@ -89,14 +113,6 @@ export const Home = () => {
             </a>
           </li>
         </ul>
-
-        <p>
-          <Translate contentKey="home.like">If you like JHipster, do not forget to give us a star on</Translate>{' '}
-          <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">
-            GitHub
-          </a>
-          !
-        </p>
       </Col>
     </Row>
   );

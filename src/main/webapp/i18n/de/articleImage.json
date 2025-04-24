@@ -1,0 +1,26 @@
+{
+  "tiergesundApp": {
+    "articleImage": {
+      "home": {
+        "title": "Article Images",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Article Image erstellen",
+        "createOrEditLabel": "Article Image erstellen oder bearbeiten",
+        "notFound": "Keine Article Images gefunden"
+      },
+      "created": "Article Image erstellt mit ID {{ param }}",
+      "updated": "Article Image aktualisiert mit ID {{ param }}",
+      "deleted": "Article Image gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Article Image {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Article Image"
+      },
+      "id": "ID",
+      "title": "Title",
+      "image": "Image",
+      "newsArticle": "News Article"
+    }
+  }
+}
