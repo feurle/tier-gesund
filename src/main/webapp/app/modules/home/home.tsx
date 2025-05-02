@@ -1,6 +1,7 @@
 import './home.scss';
 
 import React from 'react';
+import DOMPurify from 'dompurify';
 import { Link } from 'react-router-dom';
 import { Translate } from 'react-jhipster';
 import { Alert, Col, Row } from 'reactstrap';
@@ -48,7 +49,7 @@ export const Home = () => {
           <Alert color="secondary">
             <span id="id">{newsArticleEntity.id}</span>
             <span id="title">{newsArticleEntity.title}</span>
-            <p id="content">{newsArticleEntity.content}</p>
+            <div id="content" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticleEntity.content) }} />
           </Alert>
         </div>
         {account?.login ? (
@@ -82,37 +83,8 @@ export const Home = () => {
             </Alert>
           </div>
         )}
-        <p>
-          <Translate contentKey="home.question">If you have any question on JHipster:</Translate>
-        </p>
-
-        <ul>
-          <li>
-            <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.homepage">JHipster homepage</Translate>
-            </a>
-          </li>
-          <li>
-            <a href="https://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.stackoverflow">JHipster on Stack Overflow</Translate>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.bugtracker">JHipster bug tracker</Translate>
-            </a>
-          </li>
-          <li>
-            <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.chat">JHipster public chat room</Translate>
-            </a>
-          </li>
-          <li>
-            <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.follow">follow @jhipster on Twitter</Translate>
-            </a>
-          </li>
-        </ul>
+        <div></div>
+        <div></div>
       </Col>
     </Row>
   );

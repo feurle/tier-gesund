@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Button, Col, Row } from 'reactstrap';
 import { TextFormat, Translate } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import DOMPurify from 'dompurify';
 
 import { APP_DATE_FORMAT } from 'app/config/constants';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
@@ -43,7 +44,9 @@ export const NewsArticleDetail = () => {
               <Translate contentKey="tiergesundApp.newsArticle.content">Content</Translate>
             </span>
           </dt>
-          <dd>{newsArticleEntity.content}</dd>
+          <dd>
+            <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticleEntity.content) }} />
+          </dd>
           <dt>
             <span id="state">
               <Translate contentKey="tiergesundApp.newsArticle.state">State</Translate>
