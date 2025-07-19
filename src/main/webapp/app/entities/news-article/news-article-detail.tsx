@@ -38,7 +38,9 @@ export const NewsArticleDetail = () => {
               <Translate contentKey="tiergesundApp.newsArticle.title">Title</Translate>
             </span>
           </dt>
-          <dd>{newsArticleEntity.title}</dd>
+          <dd>
+            <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticleEntity.title) }} />
+          </dd>
           <dt>
             <span id="content">
               <Translate contentKey="tiergesundApp.newsArticle.content">Content</Translate>

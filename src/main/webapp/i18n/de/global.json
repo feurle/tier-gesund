@@ -145,5 +145,5 @@
       "not.image": "Es wird erwartet, dass die Datei ein Bild ist. Die Datei ist jedoch vom Typ \"{{ fileType }}\""
     }
   },
-  "footer": "Animal health - Specialist veterinarian Dr. Lisa Feurle-Elsäßer"
+  "footer": "Tier gesund - Fachtierärztin Dr.med.vet Lisa Feurle-Elsäßer"
 }

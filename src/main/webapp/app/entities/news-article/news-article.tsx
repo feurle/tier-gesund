@@ -8,6 +8,7 @@ import { APP_DATE_FORMAT } from 'app/config/constants';
 import { ASC, DESC } from 'app/shared/util/pagination.constants';
 import { overrideSortStateWithQueryParams } from 'app/shared/util/entity-utils';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
+import DOMPurify from 'dompurify';
 
 import { getEntities } from './news-article.reducer';
 
@@ -129,8 +130,12 @@ export const NewsArticle = () => {
                       {newsArticle.id}
                     </Button>
                   </td>
-                  <td>{newsArticle.title}</td>
-                  <td>{newsArticle.content}</td>
+                  <td>
+                    <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticle.title) }} />
+                  </td>
+                  <td>
+                    <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticle.content) }} />
+                  </td>
                   <td>
                     <Translate contentKey={`tiergesundApp.State.${newsArticle.state}`} />
                   </td>
