@@ -27,6 +27,15 @@ export const getEntities = createAsyncThunk(
   { serializeError: serializeAxiosError },
 );
 
+export const getHomeEntities = createAsyncThunk(
+  'newsArticle/fetch_entity_list',
+  async ({ sort }: IQueryParams) => {
+    const requestUrl = `${apiUrl}/home?cacheBuster=${new Date().getTime()}`;
+    return axios.get<INewsArticle[]>(requestUrl);
+  },
+  { serializeError: serializeAxiosError },
+);
+
 export const getEntity = createAsyncThunk(
   'newsArticle/fetch_entity',
   async (id: string | number) => {

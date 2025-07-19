@@ -142,6 +142,17 @@ public class NewsArticleResource {
     }
 
     /**
+     * {@code GET  /news-articles/home} : get all the newsArticles.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of newsArticles in body.
+     */
+    @GetMapping("/home")
+    public List<NewsArticleDTO> getHomeNewsArticles() {
+        LOG.debug("REST request to get home NewsArticles");
+        return newsArticleService.findAll();
+    }
+
+    /**
      * {@code GET  /news-articles/:id} : get the "id" newsArticle.
      *
      * @param id the id of the newsArticleDTO to retrieve.

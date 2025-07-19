@@ -8,8 +8,7 @@ import { Alert, Col, Row } from 'reactstrap';
 
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
-import { getEntity } from 'app/entities/news-article/news-article.reducer';
-import { getEntities } from 'app/entities/news-article/news-article.reducer';
+import { getEntity, getHomeEntities } from 'app/entities/news-article/news-article.reducer';
 
 export const Home = () => {
   const account = useAppSelector(state => state.authentication.account);
@@ -20,13 +19,13 @@ export const Home = () => {
   const error = useAppSelector(state => state.newsArticle.error);
 
   const getAllEntities = () => {
-    dispatch(getEntities({}));
+    dispatch(getHomeEntities({}));
   };
 
   React.useEffect(() => {
     // Replace '1' with the ID you want to fetch
     dispatch(getEntity(1));
-    // getAllEntities();
+    getAllEntities();
   }, []);
 
   const newsArticleEntity = useAppSelector(state => state.newsArticle.entity);
@@ -95,6 +94,18 @@ export const Home = () => {
           {newsArticleList && newsArticleList.length > 0 ? (
             <div>
               <h1>Y</h1>
+              <div>
+                {newsArticleList.map((newsArticle, i) => (
+                  <div key={`id-${i}`}>
+                    <div>
+                      <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticle.title) }} />
+                    </div>
+                    <div>
+                      <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticle.content) }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           ) : (
             !loading && (
