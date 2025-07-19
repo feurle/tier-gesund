@@ -11,6 +11,7 @@ import { getEntities as getArticleImages } from 'app/entities/article-image/arti
 import { getUsers } from 'app/modules/administration/user-management/user-management.reducer';
 import { State } from 'app/shared/model/enumerations/state.model';
 import { Language } from 'app/shared/model/enumerations/language.model';
+import { Location } from 'app/shared/model/enumerations/location.model';
 import { createEntity, getEntity, reset, updateEntity } from './news-article.reducer';
 
 export const NewsArticleUpdate = () => {
@@ -29,6 +30,7 @@ export const NewsArticleUpdate = () => {
   const updateSuccess = useAppSelector(state => state.newsArticle.updateSuccess);
   const stateValues = Object.keys(State);
   const languageValues = Object.keys(Language);
+  const locationValues = Object.keys(Location);
 
   const handleClose = () => {
     navigate('/news-article');
@@ -79,6 +81,7 @@ export const NewsArticleUpdate = () => {
       : {
           state: 'PUBLISHED',
           language: 'GERMAN',
+          location: 'TEASER',
           ...newsArticleEntity,
           publishedDate: convertDateTimeFromServer(newsArticleEntity.publishedDate),
           articleImage: newsArticleEntity?.articleImage?.id,
@@ -168,6 +171,19 @@ export const NewsArticleUpdate = () => {
                 {languageValues.map(language => (
                   <option value={language} key={language}>
                     {translate(`tiergesundApp.Language.${language}`)}
+                  </option>
+                ))}
+              </ValidatedField>
+              <ValidatedField
+                label={translate('tiergesundApp.newsArticle.location')}
+                id="news-article-location"
+                name="location"
+                data-cy="location"
+                type="select"
+              >
+                {locationValues.map(location => (
+                  <option value={location} key={location}>
+                    {translate(`tiergesundApp.Location.${location}`)}
                   </option>
                 ))}
               </ValidatedField>

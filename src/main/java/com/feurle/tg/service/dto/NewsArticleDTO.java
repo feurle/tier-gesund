@@ -1,6 +1,7 @@
 package com.feurle.tg.service.dto;
 
 import com.feurle.tg.domain.enumeration.Language;
+import com.feurle.tg.domain.enumeration.Location;
 import com.feurle.tg.domain.enumeration.State;
 import jakarta.persistence.Lob;
 import jakarta.validation.constraints.*;
@@ -29,6 +30,8 @@ public class NewsArticleDTO implements Serializable {
     private String author;
 
     private Language language;
+
+    private Location location;
 
     private ArticleImageDTO articleImage;
 
@@ -90,6 +93,14 @@ public class NewsArticleDTO implements Serializable {
         this.language = language;
     }
 
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
     public ArticleImageDTO getArticleImage() {
         return articleImage;
     }
@@ -138,6 +149,7 @@ public class NewsArticleDTO implements Serializable {
             ", publishedDate='" + getPublishedDate() + "'" +
             ", author='" + getAuthor() + "'" +
             ", language='" + getLanguage() + "'" +
+            ", location='" + getLocation() + "'" +
             ", articleImage=" + getArticleImage() +
             ", user=" + getUser() +
             "}";

@@ -52,7 +52,8 @@ public class NewsArticleAsserts {
             .satisfies(a -> assertThat(a.getState()).as("check state").isEqualTo(expected.getState()))
             .satisfies(a -> assertThat(a.getPublishedDate()).as("check publishedDate").isEqualTo(expected.getPublishedDate()))
             .satisfies(a -> assertThat(a.getAuthor()).as("check author").isEqualTo(expected.getAuthor()))
-            .satisfies(a -> assertThat(a.getLanguage()).as("check language").isEqualTo(expected.getLanguage()));
+            .satisfies(a -> assertThat(a.getLanguage()).as("check language").isEqualTo(expected.getLanguage()))
+            .satisfies(a -> assertThat(a.getLocation()).as("check location").isEqualTo(expected.getLocation()));
     }
 
     /**

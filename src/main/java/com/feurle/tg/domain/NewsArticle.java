@@ -2,6 +2,7 @@ package com.feurle.tg.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.feurle.tg.domain.enumeration.Language;
+import com.feurle.tg.domain.enumeration.Location;
 import com.feurle.tg.domain.enumeration.State;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -48,6 +49,10 @@ public class NewsArticle implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "language")
     private Language language;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "location")
+    private Location location;
 
     @JsonIgnoreProperties(value = { "newsArticle" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY)
@@ -150,6 +155,19 @@ public class NewsArticle implements Serializable {
         this.language = language;
     }
 
+    public Location getLocation() {
+        return this.location;
+    }
+
+    public NewsArticle location(Location location) {
+        this.setLocation(location);
+        return this;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
     public ArticleImage getArticleImage() {
         return this.articleImage;
     }
@@ -206,6 +224,7 @@ public class NewsArticle implements Serializable {
             ", publishedDate='" + getPublishedDate() + "'" +
             ", author='" + getAuthor() + "'" +
             ", language='" + getLanguage() + "'" +
+            ", location='" + getLocation() + "'" +
             "}";
     }
 }

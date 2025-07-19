@@ -5,11 +5,17 @@ entity NewsArticle {
   publishedDate Instant
   author String
   language Language
+  location Location
 }
 
 entity ArticleImage {
   title String required
   image ImageBlob
+}
+
+enum Location {
+  TEASER,
+  HOME
 }
 
 

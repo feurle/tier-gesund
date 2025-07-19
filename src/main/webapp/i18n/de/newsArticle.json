@@ -24,6 +24,7 @@
       "publishedDate": "Published Date",
       "author": "Author",
       "language": "Language",
+      "location": "Location",
       "articleImage": "Article Image",
       "user": "User"
     }

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.feurle.tg.IntegrationTest;
 import com.feurle.tg.domain.NewsArticle;
 import com.feurle.tg.domain.enumeration.Language;
+import com.feurle.tg.domain.enumeration.Location;
 import com.feurle.tg.domain.enumeration.State;
 import com.feurle.tg.repository.NewsArticleRepository;
 import com.feurle.tg.repository.UserRepository;
@@ -57,6 +58,9 @@ class NewsArticleResourceIT {
     private static final Language DEFAULT_LANGUAGE = Language.GERMAN;
     private static final Language UPDATED_LANGUAGE = Language.ENGLISH;
 
+    private static final Location DEFAULT_LOCATION = Location.TEASER;
+    private static final Location UPDATED_LOCATION = Location.HOME;
+
     private static final String ENTITY_API_URL = "/api/news-articles";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -98,7 +102,8 @@ class NewsArticleResourceIT {
             .state(DEFAULT_STATE)
             .publishedDate(DEFAULT_PUBLISHED_DATE)
             .author(DEFAULT_AUTHOR)
-            .language(DEFAULT_LANGUAGE);
+            .language(DEFAULT_LANGUAGE)
+            .location(DEFAULT_LOCATION);
     }
 
     /**
@@ -114,7 +119,8 @@ class NewsArticleResourceIT {
             .state(UPDATED_STATE)
             .publishedDate(UPDATED_PUBLISHED_DATE)
             .author(UPDATED_AUTHOR)
-            .language(UPDATED_LANGUAGE);
+            .language(UPDATED_LANGUAGE)
+            .location(UPDATED_LOCATION);
     }
 
     @BeforeEach
@@ -206,7 +212,8 @@ class NewsArticleResourceIT {
             .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
             .andExpect(jsonPath("$.[*].publishedDate").value(hasItem(DEFAULT_PUBLISHED_DATE.toString())))
             .andExpect(jsonPath("$.[*].author").value(hasItem(DEFAULT_AUTHOR)))
-            .andExpect(jsonPath("$.[*].language").value(hasItem(DEFAULT_LANGUAGE.toString())));
+            .andExpect(jsonPath("$.[*].language").value(hasItem(DEFAULT_LANGUAGE.toString())))
+            .andExpect(jsonPath("$.[*].location").value(hasItem(DEFAULT_LOCATION.toString())));
     }
 
     @Test
@@ -226,7 +233,8 @@ class NewsArticleResourceIT {
             .andExpect(jsonPath("$.state").value(DEFAULT_STATE.toString()))
             .andExpect(jsonPath("$.publishedDate").value(DEFAULT_PUBLISHED_DATE.toString()))
             .andExpect(jsonPath("$.author").value(DEFAULT_AUTHOR))
-            .andExpect(jsonPath("$.language").value(DEFAULT_LANGUAGE.toString()));
+            .andExpect(jsonPath("$.language").value(DEFAULT_LANGUAGE.toString()))
+            .andExpect(jsonPath("$.location").value(DEFAULT_LOCATION.toString()));
     }
 
     @Test
@@ -254,7 +262,8 @@ class NewsArticleResourceIT {
             .state(UPDATED_STATE)
             .publishedDate(UPDATED_PUBLISHED_DATE)
             .author(UPDATED_AUTHOR)
-            .language(UPDATED_LANGUAGE);
+            .language(UPDATED_LANGUAGE)
+            .location(UPDATED_LOCATION);
         NewsArticleDTO newsArticleDTO = newsArticleMapper.toDto(updatedNewsArticle);
 
         restNewsArticleMockMvc
@@ -344,7 +353,7 @@ class NewsArticleResourceIT {
         NewsArticle partialUpdatedNewsArticle = new NewsArticle();
         partialUpdatedNewsArticle.setId(newsArticle.getId());
 
-        partialUpdatedNewsArticle.title(UPDATED_TITLE).content(UPDATED_CONTENT);
+        partialUpdatedNewsArticle.title(UPDATED_TITLE).content(UPDATED_CONTENT).location(UPDATED_LOCATION);
 
         restNewsArticleMockMvc
             .perform(
@@ -381,7 +390,8 @@ class NewsArticleResourceIT {
             .state(UPDATED_STATE)
             .publishedDate(UPDATED_PUBLISHED_DATE)
             .author(UPDATED_AUTHOR)
-            .language(UPDATED_LANGUAGE);
+            .language(UPDATED_LANGUAGE)
+            .location(UPDATED_LOCATION);
 
         restNewsArticleMockMvc
             .perform(

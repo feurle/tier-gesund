@@ -15,7 +15,7 @@ describe('NewsArticle e2e test', () => {
   const newsArticlePageUrlPattern = new RegExp('/news-article(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const newsArticleSample = { title: 'alarmieren imprägnieren instead', content: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=' };
+  const newsArticleSample = { title: 'aha aw if', content: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=' };
 
   let newsArticle;
 
@@ -159,22 +159,24 @@ describe('NewsArticle e2e test', () => {
     });
 
     it('should create an instance of NewsArticle', () => {
-      cy.get(`[data-cy="title"]`).type('fooey');
-      cy.get(`[data-cy="title"]`).should('have.value', 'fooey');
+      cy.get(`[data-cy="title"]`).type('what');
+      cy.get(`[data-cy="title"]`).should('have.value', 'what');
 
       cy.get(`[data-cy="content"]`).type('../fake-data/blob/hipster.txt');
       cy.get(`[data-cy="content"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
 
-      cy.get(`[data-cy="state"]`).select('CREATED');
+      cy.get(`[data-cy="state"]`).select('PUBLISHED');
 
-      cy.get(`[data-cy="publishedDate"]`).type('2025-04-20T21:37');
+      cy.get(`[data-cy="publishedDate"]`).type('2025-04-21T13:37');
       cy.get(`[data-cy="publishedDate"]`).blur();
-      cy.get(`[data-cy="publishedDate"]`).should('have.value', '2025-04-20T21:37');
+      cy.get(`[data-cy="publishedDate"]`).should('have.value', '2025-04-21T13:37');
 
-      cy.get(`[data-cy="author"]`).type('and entlang Physik');
-      cy.get(`[data-cy="author"]`).should('have.value', 'and entlang Physik');
+      cy.get(`[data-cy="author"]`).type('Wein echauffieren whoa');
+      cy.get(`[data-cy="author"]`).should('have.value', 'Wein echauffieren whoa');
 
-      cy.get(`[data-cy="language"]`).select('GERMAN');
+      cy.get(`[data-cy="language"]`).select('RUSSIAN');
+
+      cy.get(`[data-cy="location"]`).select('TEASER');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

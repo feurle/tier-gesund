@@ -113,6 +113,10 @@ export const NewsArticle = () => {
                   <Translate contentKey="tiergesundApp.newsArticle.language">Language</Translate>{' '}
                   <FontAwesomeIcon icon={getSortIconByFieldName('language')} />
                 </th>
+                <th className="hand" onClick={sort('location')}>
+                  <Translate contentKey="tiergesundApp.newsArticle.location">Location</Translate>{' '}
+                  <FontAwesomeIcon icon={getSortIconByFieldName('location')} />
+                </th>
                 <th>
                   <Translate contentKey="tiergesundApp.newsArticle.articleImage">Article Image</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
@@ -147,6 +151,9 @@ export const NewsArticle = () => {
                   <td>{newsArticle.author}</td>
                   <td>
                     <Translate contentKey={`tiergesundApp.Language.${newsArticle.language}`} />
+                  </td>
+                  <td>
+                    <Translate contentKey={`tiergesundApp.Location.${newsArticle.location}`} />
                   </td>
                   <td>
                     {newsArticle.articleImage ? (
