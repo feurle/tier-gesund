@@ -8,7 +8,7 @@
     <!--
         Added the constraints for entity NewsArticle.
     -->
-    <changeSet id="20250421153514-2" author="jhipster">
+    <changeSet id="20250720080841-2" author="jhipster">
 
         <addForeignKeyConstraint baseColumnNames="article_image_id"
                                  baseTableName="news_article"

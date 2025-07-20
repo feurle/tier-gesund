@@ -78,6 +78,12 @@ export const NewsArticleDetail = () => {
           </dt>
           <dd>{newsArticleEntity.language}</dd>
           <dt>
+            <span id="location">
+              <Translate contentKey="tiergesundApp.newsArticle.location">Location</Translate>
+            </span>
+          </dt>
+          <dd>{newsArticleEntity.location}</dd>
+          <dt>
             <Translate contentKey="tiergesundApp.newsArticle.articleImage">Article Image</Translate>
           </dt>
           <dd>{newsArticleEntity.articleImage ? newsArticleEntity.articleImage.id : ''}</dd>

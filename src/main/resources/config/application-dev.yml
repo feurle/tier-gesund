@@ -24,29 +24,25 @@ spring:
   devtools:
     restart:
       enabled: true
-      additional-exclude: static/**,.h2.server.properties
+      additional-exclude: static/**
     livereload:
       enabled: false # we use Webpack dev server + BrowserSync for livereload
-  docker:
-    compose:
-      enabled: false
-      profiles:
-        active: dev
   jackson:
     serialization:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:mem:tiergesund;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    username: tiergesund
+    url: jdbc:mysql://localhost:3306/tiergesund?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+    username: root
     password:
     hikari:
       poolName: Hikari
       auto-commit: false
-  h2:
-    console:
-      # JHipster uses a custom h2-console initializer
-      enabled: true
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
   liquibase:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
     contexts: dev, faker
@@ -91,7 +87,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: YzE0MzkwZTIyMjAzYmU0Mzc0NTI5M2IxNTA0MmU2M2ZmMjY1YjBmOGQ1YzQ4OGNjNDA1YTFiNTBjMTg0N2U1ZTRiYTc5YWZmNzU5OWM0NzM5MjBhZjQzMTgxYTQ2OWIyMmU0MGQ4ODZmMjMzMTBkYTU3MDBmZmI2OTdkM2IyMGM=
+        base64-secret: ZTZmYTBhNTQyZjVlOTY4Yzk1NmNjYTA1ZTA5ZmExOTI4YmZiMDc3NmZiMTdhYmRkYWQ5ODAzZGI3NzRiMWI3NzNiZWU3ZmIzZmU4ZjhhMzg2ZGEwOGRiNWQwN2VkZjg5ZjRiYTc0ZDNmN2U1NDk4NGFlN2E0ZjRhZWFiMjBkM2E=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000

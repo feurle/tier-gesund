@@ -1,6 +1,5 @@
 package com.feurle.tg.config;
 
-import java.util.Arrays;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +11,6 @@ import org.springframework.test.context.ContextConfigurationAttributes;
 import org.springframework.test.context.ContextCustomizer;
 import org.springframework.test.context.ContextCustomizerFactory;
 import org.springframework.test.context.MergedContextConfiguration;
-import tech.jhipster.config.JHipsterConstants;
 
 public class SqlTestContainersSpringContextCustomizerFactory implements ContextCustomizerFactory {
 
@@ -28,16 +26,13 @@ public class SqlTestContainersSpringContextCustomizerFactory implements ContextC
                 ConfigurableListableBeanFactory beanFactory = context.getBeanFactory();
                 TestPropertyValues testValues = TestPropertyValues.empty();
                 EmbeddedSQL sqlAnnotation = AnnotatedElementUtils.findMergedAnnotation(testClass, EmbeddedSQL.class);
-                boolean usingTestProdProfile = Arrays.asList(context.getEnvironment().getActiveProfiles()).contains(
-                    "test" + JHipsterConstants.SPRING_PROFILE_PRODUCTION
-                );
-                if (null != sqlAnnotation && usingTestProdProfile) {
+                if (null != sqlAnnotation) {
                     log.debug("detected the EmbeddedSQL annotation on class {}", testClass.getName());
                     log.info("Warming up the sql database");
                     if (null == prodTestContainer) {
                         try {
                             Class<? extends SqlTestContainer> containerClass = (Class<? extends SqlTestContainer>) Class.forName(
-                                this.getClass().getPackageName() + ".PostgreSqlTestContainer"
+                                this.getClass().getPackageName() + ".MysqlTestContainer"
                             );
                             prodTestContainer = beanFactory.createBean(containerClass);
                             beanFactory.registerSingleton(containerClass.getName(), prodTestContainer);
@@ -48,7 +43,11 @@ public class SqlTestContainersSpringContextCustomizerFactory implements ContextC
                             throw new RuntimeException(e);
                         }
                     }
-                    testValues = testValues.and("spring.datasource.url=" + prodTestContainer.getTestContainer().getJdbcUrl() + "");
+                    testValues = testValues.and(
+                        "spring.datasource.url=" +
+                        prodTestContainer.getTestContainer().getJdbcUrl() +
+                        "?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true"
+                    );
                     testValues = testValues.and("spring.datasource.username=" + prodTestContainer.getTestContainer().getUsername());
                     testValues = testValues.and("spring.datasource.password=" + prodTestContainer.getTestContainer().getPassword());
                 }

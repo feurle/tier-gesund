@@ -1,14 +1,5 @@
-sourceSets {
-    test {
-        java {
-            exclude 'com/feurle/tg//config/PostgreSqlTestContainer.java'
-        }
-    }
-}
-
 dependencies {
     developmentOnly "org.springframework.boot:spring-boot-devtools"
-    implementation "com.h2database:h2"
     // jhipster-needle-gradle-dependency - JHipster will add additional dependencies here
 }
 

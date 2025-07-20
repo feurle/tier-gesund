@@ -7,9 +7,7 @@ dependencies {
   liquibaseRuntime "org.liquibase:liquibase-core"
   // Dependency required to parse options. Refer to https://github.com/liquibase/liquibase-gradle-plugin/tree/Release_2.2.0#news.
   liquibaseRuntime "info.picocli:picocli:4.7.6"
-  if (project.hasProperty("prod") || project.hasProperty("gae")) {
-  liquibaseRuntime "org.postgresql:postgresql"
-  }
+  liquibaseRuntime "com.mysql:mysql-connector-j"
   liquibaseRuntime "org.liquibase.ext:liquibase-hibernate6:${liquibaseVersion}"
   // jhipster-needle-gradle-dependency - JHipster will add additional dependencies here
 }
@@ -22,19 +20,19 @@ if (!project.hasProperty("runList")) {
 liquibase {
   activities {
     main {
-      driver "org.h2.Driver"
-      url "jdbc:h2:tcp://localhost:18080/mem:tiergesund"
-      username "tiergesund"
+      driver "com.mysql.cj.jdbc.Driver"
+      url "jdbc:mysql://localhost:3306/tiergesund"
+      username "root"
       changelogFile "src/main/resources/config/liquibase/master.xml"
       logLevel "debug"
       classpath "src/main/resources/"
     }
     diffLog {
-      driver "org.h2.Driver"
-      url "jdbc:h2:tcp://localhost:18080/mem:tiergesund"
-      username "tiergesund"
+      driver "com.mysql.cj.jdbc.Driver"
+      url "jdbc:mysql://localhost:3306/tiergesund"
+      username "root"
       changelogFile project.ext.diffChangelogFile
-      referenceUrl "hibernate:spring:com.feurle.tg.domain?dialect=org.hibernate.dialect.H2Dialect&hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
+      referenceUrl "hibernate:spring:com.feurle.tg.domain?dialect=org.hibernate.dialect.MySQL8Dialect&hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
       logLevel "debug"
       classpath "$buildDir/classes/java/main"
     }

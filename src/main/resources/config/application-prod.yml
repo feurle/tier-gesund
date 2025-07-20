@@ -33,12 +33,17 @@ spring:
       enabled: false
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/tiergesund
-    username: tiergesund
+    url: jdbc:mysql://localhost:3306/tiergesund?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+    username: root
     password:
     hikari:
       poolName: Hikari
       auto-commit: false
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
   # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
   liquibase:
     contexts: prod
@@ -99,7 +104,7 @@ jhipster:
         # - In the Consul configserver
         # - In a separate `application-prod.yml` file, in the same folder as your executable JAR file
         # - In the `JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET` environment variable
-        base64-secret: YzE0MzkwZTIyMjAzYmU0Mzc0NTI5M2IxNTA0MmU2M2ZmMjY1YjBmOGQ1YzQ4OGNjNDA1YTFiNTBjMTg0N2U1ZTRiYTc5YWZmNzU5OWM0NzM5MjBhZjQzMTgxYTQ2OWIyMmU0MGQ4ODZmMjMzMTBkYTU3MDBmZmI2OTdkM2IyMGM=
+        base64-secret: ZTZmYTBhNTQyZjVlOTY4Yzk1NmNjYTA1ZTA5ZmExOTI4YmZiMDc3NmZiMTdhYmRkYWQ5ODAzZGI3NzRiMWI3NzNiZWU3ZmIzZmU4ZjhhMzg2ZGEwOGRiNWQwN2VkZjg5ZjRiYTc0ZDNmN2U1NDk4NGFlN2E0ZjRhZWFiMjBkM2E=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000
