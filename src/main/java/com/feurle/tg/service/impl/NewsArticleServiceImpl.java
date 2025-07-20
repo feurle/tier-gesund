@@ -1,6 +1,8 @@
 package com.feurle.tg.service.impl;
 
 import com.feurle.tg.domain.NewsArticle;
+import com.feurle.tg.domain.enumeration.Location;
+import com.feurle.tg.domain.enumeration.State;
 import com.feurle.tg.repository.NewsArticleRepository;
 import com.feurle.tg.service.NewsArticleService;
 import com.feurle.tg.service.dto.NewsArticleDTO;
@@ -68,6 +70,28 @@ public class NewsArticleServiceImpl implements NewsArticleService {
     public List<NewsArticleDTO> findAll() {
         LOG.debug("Request to get all NewsArticles");
         return newsArticleRepository.findAll().stream().map(newsArticleMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<NewsArticleDTO> findAllByState(State state) {
+        LOG.debug("Request to get all NewsArticles : {}", state);
+        return newsArticleRepository
+            .findAllByState(state)
+            .stream()
+            .map(newsArticleMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<NewsArticleDTO> findAllByLocation(Location location) {
+        LOG.debug("Request to get all NewsArticles : {}", location);
+        return newsArticleRepository
+            .findAllByLocation(location)
+            .stream()
+            .map(newsArticleMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
     }
 
     @Override

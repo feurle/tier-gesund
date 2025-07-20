@@ -62,6 +62,7 @@ class NewsArticleResourceIT {
     private static final Location UPDATED_LOCATION = Location.HOME;
 
     private static final String ENTITY_API_URL = "/api/news-articles";
+    private static final String ENTITY_API_URL_HOME = ENTITY_API_URL + "/home";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
     private static Random random = new Random();

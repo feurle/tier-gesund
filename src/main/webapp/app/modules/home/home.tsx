@@ -53,9 +53,23 @@ export const Home = () => {
         </p>
         <div>
           <Alert color="secondary">
-            <span id="id">{newsArticleEntity.id}</span>
-            <div id="content" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticleEntity.title) }} />
-            <div id="content" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticleEntity.content) }} />
+            <div>
+              {newsArticleList
+                .filter(newsArticle => newsArticle.location === 'TEASER')
+                .map((newsArticle, i) => (
+                  <div key={`id-${i}`}>
+                    <div>
+                      <span id="title" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticle.title) }} />
+                    </div>
+                    <div>
+                      <span id="content" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticle.content) }} />
+                    </div>
+                    <div>
+                      <span id="location" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticle.location) }} />
+                    </div>
+                  </div>
+                ))}
+            </div>
           </Alert>
         </div>
         {account?.login ? (
@@ -93,18 +107,23 @@ export const Home = () => {
         <div>
           {newsArticleList && newsArticleList.length > 0 ? (
             <div>
-              <h1>Y</h1>
+              <h1>HOME</h1>
               <div>
-                {newsArticleList.map((newsArticle, i) => (
-                  <div key={`id-${i}`}>
-                    <div>
-                      <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticle.title) }} />
+                {newsArticleList
+                  .filter(newsArticle => newsArticle.location === 'HOME')
+                  .map((newsArticle, i) => (
+                    <div key={`id-${i}`}>
+                      <div>
+                        <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticle.title) }} />
+                      </div>
+                      <div>
+                        <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticle.content) }} />
+                      </div>
+                      <div>
+                        <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticle.location) }} />
+                      </div>
                     </div>
-                    <div>
-                      <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticle.content) }} />
-                    </div>
-                  </div>
-                ))}
+                  ))}
               </div>
             </div>
           ) : (

@@ -1,5 +1,7 @@
 package com.feurle.tg.service;
 
+import com.feurle.tg.domain.enumeration.Location;
+import com.feurle.tg.domain.enumeration.State;
 import com.feurle.tg.service.dto.NewsArticleDTO;
 import java.util.List;
 import java.util.Optional;
@@ -38,6 +40,22 @@ public interface NewsArticleService {
      * @return the list of entities.
      */
     List<NewsArticleDTO> findAll();
+
+    /**
+     * Get all the newsArticles by location.
+     *
+     * @param location the location of the entity.
+     * @return the list of entities.
+     */
+    List<NewsArticleDTO> findAllByLocation(Location location);
+
+    /**
+     * Get all the newsArticles by state.
+     *
+     * @param state the state of the entity.
+     * @return the list of entities.
+     */
+    List<NewsArticleDTO> findAllByState(State state);
 
     /**
      * Get the "id" newsArticle.

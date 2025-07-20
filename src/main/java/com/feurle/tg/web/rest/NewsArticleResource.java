@@ -1,5 +1,7 @@
 package com.feurle.tg.web.rest;
 
+import com.feurle.tg.domain.enumeration.Location;
+import com.feurle.tg.domain.enumeration.State;
 import com.feurle.tg.repository.NewsArticleRepository;
 import com.feurle.tg.service.NewsArticleService;
 import com.feurle.tg.service.dto.NewsArticleDTO;
@@ -149,7 +151,18 @@ public class NewsArticleResource {
     @GetMapping("/home")
     public List<NewsArticleDTO> getHomeNewsArticles() {
         LOG.debug("REST request to get home NewsArticles");
-        return newsArticleService.findAll();
+        return newsArticleService.findAllByState(State.PUBLISHED);
+    }
+
+    /**
+     * {@code GET  /news-articles/teaser} : get all the newsArticles.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of newsArticles in body.
+     */
+    @GetMapping("/teaser")
+    public List<NewsArticleDTO> getTeaserNewsArticles() {
+        LOG.debug("REST request to get teaser NewsArticles");
+        return newsArticleService.findAllByLocation(Location.TEASER);
     }
 
     /**
