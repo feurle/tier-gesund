@@ -58,15 +58,12 @@ export const Home = () => {
                 .filter(newsArticle => newsArticle.location === 'TEASER')
                 .map((newsArticle, i) => (
                   <div key={`id-${i}`}>
-                    <div>
+                    <h1>
                       <span id="title" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticle.title) }} />
-                    </div>
-                    <div>
+                    </h1>
+                    <p>
                       <span id="content" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticle.content) }} />
-                    </div>
-                    <div>
-                      <span id="location" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticle.location) }} />
-                    </div>
+                    </p>
                   </div>
                 ))}
             </div>
@@ -107,24 +104,18 @@ export const Home = () => {
         <div>
           {newsArticleList && newsArticleList.length > 0 ? (
             <div>
-              <h1>HOME</h1>
-              <div>
-                {newsArticleList
-                  .filter(newsArticle => newsArticle.location === 'HOME')
-                  .map((newsArticle, i) => (
-                    <div key={`id-${i}`}>
-                      <div>
-                        <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticle.title) }} />
-                      </div>
-                      <div>
-                        <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticle.content) }} />
-                      </div>
-                      <div>
-                        <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticle.location) }} />
-                      </div>
-                    </div>
-                  ))}
-              </div>
+              {newsArticleList
+                .filter(newsArticle => newsArticle.location === 'HOME')
+                .map((newsArticle, i) => (
+                  <div key={`id-${i}`}>
+                    <h1>
+                      <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticle.title) }} />
+                    </h1>
+                    <p>
+                      <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(newsArticle.content) }} />
+                    </p>
+                  </div>
+                ))}
             </div>
           ) : (
             !loading && (

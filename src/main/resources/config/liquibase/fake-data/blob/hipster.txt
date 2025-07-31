@@ -1,1 +1,0 @@
-JHipster is a <b>development platform</b> to <i>generate</i>, develop and deploy Spring Boot + Angular / React / Vue Web applications and Spring microservices.
