@@ -1,6 +1,6 @@
 {
   "global": {
-    "title": "Tier gesund",
+    "title": "TIER GESUND",
     "browsehappy": "Sie benutzen einen <strong>veralteten</strong> Browser. Bitte <a href=\"http://browsehappy.com/?locale=de/\">aktualisieren Sie Ihren Browser</a>, um die Benutzerfreundlichkeit zu erhöhen.",
     "menu": {
       "home": "Startseite",
@@ -145,5 +145,5 @@
       "not.image": "Es wird erwartet, dass die Datei ein Bild ist. Die Datei ist jedoch vom Typ \"{{ fileType }}\""
     }
   },
-  "footer": "Tier gesund - Fachtierärztin Dr.med.vet Lisa Feurle-Elsäßer"
+  "footer": "TIER GESUND - Fachtierärztin Dr.med.vet Lisa Feurle-Elsäßer"
 }

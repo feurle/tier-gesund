@@ -2,10 +2,10 @@
   "tiergesundApp": {
     "Language": {
       "null": "",
-      "GERMAN": "GERMAN",
-      "ENGLISH": "ENGLISH",
-      "SWEDISH": "SWEDISH",
-      "RUSSIAN": "RUSSIAN"
+      "GERMAN": "Deutsch",
+      "ENGLISH": "Englisch",
+      "SWEDISH": "Schwedisch",
+      "RUSSIAN": "Russisch"
     }
   }
 }
