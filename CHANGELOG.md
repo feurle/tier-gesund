@@ -1,3 +1,9 @@
+#### 0.0.2 (2025-08-10)
+
+##### Bug Fixes
+
+- Remove fetching the entity by id from the home ([aa33fe7](https://github.com/feurle/tier-gesund/commit/aa33fe7d59fbf499ca5dbee97f9e228b76b751d5))
+
 #### 0.0.1 (2025-07-31)
 
 ##### Other Changes
