@@ -13,7 +13,7 @@ export const languages: any = {
   // jhipster-needle-i18n-language-key-pipe - JHipster will add/remove languages in this object
 };
 
-export const locales = Object.keys(languages).sort();
+export const locales = Object.keys(languages).sort((a, b) => a.localeCompare(b));
 
 export const registerLocale = store => {
   store.dispatch(setLocale(Storage.session.get('locale', 'de')));
